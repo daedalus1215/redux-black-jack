@@ -1,9 +1,18 @@
 const redux = require('redux');
+const keypress = require('keypress');
 
 
-// Blackjack card game
 
-// initial state
+
+
+// Blackjack card game \\
+
+
+
+
+
+// Initialize state \\
+
 const storeStructure = {
     deck: [],
     dealer: [],
@@ -11,8 +20,10 @@ const storeStructure = {
 }
 
 
-// utility functions \\
 
+// Utility functions \\
+
+//@todo: perhaps we should make a proper 'card' object. This is essentially where we establish the 'card' object's format.
 function createDeck() {
     const suits = ["hearts", "diamonds", "spades", "clubs"];
     const faces = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
@@ -26,7 +37,10 @@ function createDeck() {
     return deck;
 }
 
-
+/**
+ * Retrieve the card's value we pass in.
+ * @param {Object} card 
+ */
 function getCardValue(card) {
     if (card.face === 'A') {
         return 11;
