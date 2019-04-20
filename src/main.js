@@ -80,6 +80,13 @@ const reducer = (state, action) => {
                 player: state.player
             };
         }
+        case 'FINISH_HAND': {
+            return {
+                deck: [...state.deck, ...state.dealer, ...state.player],
+                dealer: [],
+                player: []
+            }
+        }
         default: {
             return state;
         }
@@ -116,3 +123,4 @@ store.dispatch({type: 'SHUFFLE'});
 store.dispatch({type: 'DEAL'});
 store.dispatch({type: 'HIT'});
 store.dispatch({type: 'HIT'});
+store.dispatch({type: 'FINISH_HAND'});
