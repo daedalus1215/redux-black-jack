@@ -27,6 +27,20 @@ function createDeck() {
 }
 
 
+function getCardValue(card) {
+    if (card.face === 'A') {
+        return 11;
+    } if ('JQK'.indexOf(card.face) >= 0) {
+        return 10;
+    } else {
+        return card.face;
+    }
+}
+
+
+function handValue(hand) {
+    return hand.map(getCardValue).reduce((a, b) => a + b, 0);
+}
 
 
 /**
