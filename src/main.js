@@ -83,6 +83,10 @@ const reducer = (state, action) => {
 
     switch(action.type) {
         case 'DEAL': {
+            if (state.deck.length < 4) {
+                return state;
+            }
+
             const copy = [...state.deck]
             return {
                 deck: copy,
@@ -91,6 +95,16 @@ const reducer = (state, action) => {
             }
         }
         case 'HIT': {
+            // refuse to deal a card to the player if there are no cards to deal out
+            if (state.deck.length < 1) {
+                return state;
+            }
+
+            // don't allow the player to take more cards when they've reached/exceeded the cap for 21 points.
+            if (handValue(state.player) >= 21) {
+                return state;
+            }
+
             const copy = [...state.deck];
             return {
                 deck: copy,
