@@ -3,13 +3,7 @@ const redux = require('redux');
 
 // Blackjack card game
 
-// * Actions *
-// initialize - start with a fresh deck
-// shuffle - shuffle the deck
-// deal - give two cards to dealer and the player
-// hit - give one card just to the player
-// stay - end current hand ()
-// fold - end current hand (quit)
+// initial state
 const storeStructure = {
     deck: [],
     dealer: [],
@@ -32,8 +26,22 @@ function createDeck() {
 }
 
 
-// create a reducer that accepts action and returns a new state
-// depending on the action
+
+
+/**
+ ****** Actions *******
+ * 
+ * Create a reducer that accepts action and returns a new state
+ * depending on the action
+ * 
+ * 
+ * initialize - start with a fresh deck
+ * shuffle - shuffle the deck
+ * deal - give two cards to dealer and the player
+ * hit - give one card just to the player
+ * stay - end current hand ()
+ * fold - end current hand (quit)
+ */
 const reducer = (state, action) => {
     if (state === undefined) {
         return {
