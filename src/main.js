@@ -155,6 +155,32 @@ store.subscribe(() => {
 
 store.dispatch({type: 'SHUFFLE'});
 store.dispatch({type: 'DEAL'});
-store.dispatch({type: 'HIT'});
-store.dispatch({type: 'HIT'});
-store.dispatch({type: 'FINISH_HAND'});
+
+
+
+// keypress library \\
+// boilerplate code to interact with terminal 
+keypress(process.stdin);
+const MENU = '(r) shuffle (d) deal (h) hit (f) finish hand (x) quit';
+console.log("=====", MENU);
+
+// register onKeyPress handler and execute store dispatches with certain Actions.
+process.stdin.on('keypress', (ch, key) => {
+    console.log('key:', key.name);
+    if (key.name === 'x') {
+        process.stdin.pause();
+    } else if (key.name === 'r') {
+        store.dispatch({type: "SHUFFLE"});
+    } else if (key.name === 'd') {
+        store.dispatch({type: "DEAL"});
+    } else if (key.name === 'h') {
+        store.dispatch({type: "HIT"});
+    } else if (key.name === 'f') {
+        store.dispatch({type: "FINISH_HAND"});
+    }
+
+
+});
+
+process.stdin.setRawMode(true);
+process.stdin.resume();
