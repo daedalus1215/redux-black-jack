@@ -127,9 +127,14 @@ const store = redux.createStore(reducer);
 
 store.subscribe(() => {
     const state = store.getState()
+    const dealerScore = handValue(state.dealer);
+    const playerScore = handValue(state.player);
+
     console.log('deck: ', state.deck.length);
     console.log('dealer: ', state.dealer);
+    console.log('Dealer Score: ', dealerScore);
     console.log('player: ', state.player);
+    console.log('Player Score: ', playerScore);
     console.log();
 });
 
